@@ -11,11 +11,16 @@ unset GIT_DIR     # Avoid GIT_DIR leak from previous build steps
 DEFAULT_CACHE=".npm .cache/yarn bower_components"
 
 ### Configure directories
+echo "*** Msg from DIMDTI NodeJS Custom Buildpack ***"
+
 
 BUILD_DIR=${1:-}
+echo "** BUILD_DIR=$BUILD_DIR ***"
 CACHE_DIR=${2:-}
+echo "*** CACHE_DIR=$CACHE_DIR ***"
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
+echo "*** BP_DIR=$BP_DIR ***"
 $BP_DIR/compile-extensions/bin/check_stack_support
 $BP_DIR/compile-extensions/bin/check_buildpack_version $BP_DIR $CACHE_DIR
 
